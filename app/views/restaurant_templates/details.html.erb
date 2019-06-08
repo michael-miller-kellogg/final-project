@@ -1,0 +1,163 @@
+<h1>
+  <%= @restaurant.place %>
+</h1>
+
+<div>
+  <div>
+    <a href="/restaurants">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_restaurant_form/<%= @restaurant.id %>">
+      Edit restaurant
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_restaurant/<%= @restaurant.id %>">
+      Delete restaurant
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Place
+  </dt>
+  <dd>
+    <%= @restaurant.place %>
+  </dd>
+
+  <dt>
+    Website
+  </dt>
+  <dd>
+    <%= @restaurant.website %>
+  </dd>
+
+  <dt>
+    Cuisine
+  </dt>
+  <dd>
+    <%= @restaurant.cuisine %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@restaurant.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@restaurant.updated_at) %> ago
+  </dd>
+</dl>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+
+    <th>
+      Dish
+    </th>
+
+    <th>
+      Description
+    </th>
+
+    <th>
+      Vegetarian
+    </th>
+
+    <th>
+      Vegan
+    </th>
+
+    <th>
+      Glutenfree
+    </th>
+
+    <th>
+      Size
+    </th>
+
+    <th>
+      Price
+    </th>
+
+    <th>
+      Link to all details & reviews
+    </th>
+
+
+
+    <th>
+      blah
+    </th>
+  </tr>
+
+  <% Item.where("restaurant_id = ?", @restaurant.id).each do |item| %>
+  <tr>
+    <td>
+      <%= item.id %>
+    </td>
+
+
+
+    <td>
+      <%= item.dish %>
+    </td>
+
+    <td>
+      <%= item.description %>
+    </td>
+
+    <td>
+      <% if item.vegetarian %>
+        Yes
+      <% else %>
+        No
+      <% end %>
+      
+    </td>
+
+    <td>
+      <% if item.vegan %>
+        Yes
+      <% else %>
+        No
+      <% end %>
+    </td>
+
+    <td>
+      <% if item.glutenfree %>
+        Yes
+      <% else %>
+        No
+      <% end %>
+    </td>
+
+    <td>
+      <%= item.size %>
+    </td>
+
+    <td>
+      $<%= item.price %>
+    </td>
+
+    <td>
+      Average reviews go here!!!!
+    </td>
+    
+    
+<% end %>
+  </tr>

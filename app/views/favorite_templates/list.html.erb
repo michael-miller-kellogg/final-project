@@ -1,0 +1,66 @@
+<h1>
+  Favorite list
+</h1>
+
+<a href="/new_favorite_form">
+  Add a new favorite
+</a>
+
+<hr>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Item
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @favorites.each do |favorite| %>
+  <tr>
+    <td>
+      <%= favorite.id %>
+    </td>
+
+    <td>
+      <%= favorite.user_id %>
+    </td>
+
+    <td>
+      <%= favorite.item_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(favorite.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(favorite.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/favorites/<%= favorite.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

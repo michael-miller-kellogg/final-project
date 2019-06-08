@@ -1,0 +1,43 @@
+<h1>
+  Add a new restaurant
+</h1>
+
+<hr>
+
+<%= render("restaurant_templates/validation_failures.html.erb") %>
+
+<form action="/insert_restaurant_record" method="post">
+  <div>
+    <label for="place">
+      Place
+    </label>
+
+    <input type="text" id="place" name="place" value="<%= @restaurant.place %>">
+  </div>
+
+  <div>
+    <label for="website">
+      Website
+    </label>
+
+    <input type="text" id="website" name="website" value="<%= @restaurant.website %>">
+  </div>
+
+  <div>
+    <label for="cuisine">
+      Cuisine
+    </label>
+
+    <input type="text" id="cuisine" name="cuisine" value="<%= @restaurant.cuisine %>">
+  </div>
+
+  <button>
+    Create restaurant
+  </button>
+</form>
+
+<hr>
+
+<a href="/restaurants">
+  Go back
+</a>

@@ -1,0 +1,87 @@
+<h1>
+  Add a new item
+</h1>
+
+<hr>
+
+<%= render("item_templates/validation_failures.html.erb") %>
+
+<form action="/insert_item_record" method="post">
+  <div>
+  <label for="restaurant_dropdown">
+    Restaurant
+  </label>
+  
+    <select id="restaurant_dropdown" name="restaurant_id" id="restaurant_id" >
+      <% Restaurant.all.order({ :place => :asc }).each do |a_restaurant| %>
+        <option value="<%= a_restaurant.id %>">
+          <%= a_restaurant.place %>
+        </option>
+      <% end %>
+    </select>
+  </div>
+
+  <div>
+    
+    <label for="dish">
+      Dish
+    </label>
+
+    <input type="text" id="dish" name="dish" value="<%= @item.dish %>">
+  </div>
+
+  <div>
+    <label for="description">
+      Description
+    </label>
+
+    <input type="text" id="description" name="description" value="<%= @item.description %>">
+  </div>
+
+  <div>
+    <input id="vegetarian" name="vegetarian" type="checkbox" <%= "checked" if @item.vegetarian %>>
+    <label for="vegetarian">
+      Vegetarian
+    </label>
+  </div>
+
+  <div>
+    <input id="vegan" name="vegan" type="checkbox" <%= "checked" if @item.vegan %>>
+    <label for="vegan">
+      Vegan
+    </label>
+  </div>
+
+  <div>
+    <input id="glutenfree" name="glutenfree" type="checkbox" <%= "checked" if @item.glutenfree %>>
+    <label for="glutenfree">
+      Glutenfree
+    </label>
+  </div>
+
+  <div>
+    <label for="size">
+      Size
+    </label>
+
+    <input type="text" id="size" name="size" value="<%= @item.size %>">
+  </div>
+
+  <div>
+    <label for="price">
+      Price
+    </label>
+
+    <input type="text" id="price" name="price" value="<%= @item.price %>">
+  </div>
+
+  <button>
+    Create item
+  </button>
+</form>
+
+<hr>
+
+<a href="/items">
+  Go back
+</a>

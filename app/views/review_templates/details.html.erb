@@ -1,0 +1,75 @@
+<h1>
+  Review #<%= @review.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/reviews">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_review_form/<%= @review.id %>">
+      Edit review
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_review/<%= @review.id %>">
+      Delete review
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Item
+  </dt>
+  <dd>
+    <%= @review.item_id %>
+  </dd>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @review.user_id %>
+  </dd>
+
+  <dt>
+    Rating
+  </dt>
+  <dd>
+    <%= @review.rating %>
+  </dd>
+
+  <dt>
+    Review
+  </dt>
+  <dd>
+    <%= @review.review %>
+  </dd>
+
+  <dt>
+    Orderagain
+  </dt>
+  <dd>
+    <%= @review.orderagain %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@review.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@review.updated_at) %> ago
+  </dd>
+</dl>
+

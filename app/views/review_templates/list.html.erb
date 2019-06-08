@@ -1,0 +1,90 @@
+<h1>
+  Review list
+</h1>
+
+<a href="/new_review_form">
+  Add a new review
+</a>
+
+<hr>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Item
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Rating
+    </th>
+
+    <th>
+      Review
+    </th>
+
+    <th>
+      Orderagain
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @reviews.each do |review| %>
+  <tr>
+    <td>
+      <%= review.id %>
+    </td>
+
+    <td>
+      <%= review.item_id %>
+    </td>
+
+    <td>
+      <%= review.user_id %>
+    </td>
+
+    <td>
+      <%= review.rating %>
+    </td>
+
+    <td>
+      <%= review.review %>
+    </td>
+
+    <td>
+      <%= review.orderagain %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(review.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(review.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/reviews/<%= review.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

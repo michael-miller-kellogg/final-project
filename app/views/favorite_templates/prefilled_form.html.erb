@@ -1,0 +1,35 @@
+<h1>
+  Edit favorite #<%= @favorite.id %>
+</h1>
+
+<hr>
+
+<%= render("favorite_templates/validation_failures.html.erb") %>
+
+<form action="/update_favorite_record/<%= @favorite.id %>" method="post">
+  <div>
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" value="<%= @favorite.user_id %>">
+  </div>
+
+  <div>
+    <label for="item_id">
+      Item
+    </label>
+
+    <input type="text" id="item_id" name="item_id" value="<%= @favorite.item_id %>">
+  </div>
+
+  <button>
+    Update favorite
+  </button>
+</form>
+
+<hr>
+
+<a href="/favorites">
+  Go back
+</a>

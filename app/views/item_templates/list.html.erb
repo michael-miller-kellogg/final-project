@@ -1,0 +1,119 @@
+<h1>
+  Item list
+</h1>
+
+<a href="/new_item_form"> 
+  Add a new item
+</a>
+
+<hr>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Restaurant
+    </th>
+
+    <th>
+      Dish
+    </th>
+
+    <th>
+      Description
+    </th>
+
+    <th>
+      Vegetarian
+    </th>
+
+    <th>
+      Vegan
+    </th>
+
+    <th>
+      Glutenfree
+    </th>
+
+    <th>
+      Size
+    </th>
+
+    <th>
+      Price
+    </th>
+
+    <th>
+      Link to all details & reviews
+    </th>
+
+
+
+  </tr>
+
+  <% @items.each do |item| %>
+  <tr>
+    <td>
+      <%= item.id %>
+    </td>
+
+    <td>
+      <%= Restaurant.where("id = ?", item.restaurant_id).first.place %>
+    </td>
+
+    <td>
+      <%= item.dish %>
+    </td>
+
+    <td>
+      <%= item.description %>
+    </td>
+
+    <td>
+      <% if item.vegetarian %>
+        Yes
+      <% else %>
+        No
+      <% end %>
+      
+    </td>
+
+    <td>
+      <% if item.vegan %>
+        Yes
+      <% else %>
+        No
+      <% end %>
+    </td>
+
+    <td>
+      <% if item.glutenfree %>
+        Yes
+      <% else %>
+        No
+      <% end %>
+    </td>
+
+    <td>
+      <%= item.size %>
+    </td>
+
+    <td>
+      $<%= item.price %>
+    </td>
+
+    <td>
+      <a href= "/items/<%= item.id %>">
+        See reviews
+    </td>
+
+
+
+
+
+  </tr>
+  <% end %>
+</table>

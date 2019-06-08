@@ -1,0 +1,80 @@
+<h1>
+  Edit item #<%= @item.id %>
+</h1>
+
+<hr>
+
+<%= render("item_templates/validation_failures.html.erb") %>
+
+<form action="/update_item_record/<%= @item.id %>" method="post">
+  <div>
+    <label for="restaurant_id">
+      Restaurant
+    </label>
+
+    <input type="text" id="restaurant_id" name="restaurant_id" value="<%= @item.restaurant_id %>">
+  </div>
+
+  <div>
+    <label for="dish">
+      Dish
+    </label>
+
+    <input type="text" id="dish" name="dish" value="<%= @item.dish %>">
+  </div>
+
+  <div>
+    <label for="description">
+      Description
+    </label>
+
+    <input type="text" id="description" name="description" value="<%= @item.description %>">
+  </div>
+
+  <div>
+    <input id="vegetarian" name="vegetarian" type="checkbox" value="1" <%= "checked" if @item.vegetarian %>>
+    <label for="vegetarian">
+      Vegetarian
+    </label>
+  </div>
+
+  <div>
+    <input id="vegan" name="vegan" type="checkbox" value="1" <%= "checked" if @item.vegan %>>
+    <label for="vegan">
+      Vegan
+    </label>
+  </div>
+
+  <div>
+    <input id="glutenfree" name="glutenfree" type="checkbox" value="1" <%= "checked" if @item.glutenfree %>>
+    <label for="glutenfree">
+      Glutenfree
+    </label>
+  </div>
+
+  <div>
+    <label for="size">
+      Size
+    </label>
+
+    <input type="text" id="size" name="size" value="<%= @item.size %>">
+  </div>
+
+  <div>
+    <label for="price">
+      Price
+    </label>
+
+    <input type="text" id="price" name="price" value="<%= @item.price %>">
+  </div>
+
+  <button>
+    Update item
+  </button>
+</form>
+
+<hr>
+
+<a href="/items">
+  Go back
+</a>

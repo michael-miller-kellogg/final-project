@@ -164,6 +164,7 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    gemoji (3.0.1)
     git_clone_url (2.0.0)
       uri-ssh_git (>= 2.0)
     globalid (0.4.2)
@@ -403,6 +404,7 @@ DEPENDENCIES
   draft_generators!
   factory_bot_rails
   faker!
+  gemoji
   grade_runner!
   jbuilder (~> 2.5)
   letter_opener

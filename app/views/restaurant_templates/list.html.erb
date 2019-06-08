@@ -1,0 +1,74 @@
+<h1>
+  Restaurant list
+</h1>
+
+<a href="/new_restaurant_form">
+  Add a new restaurant
+</a>
+
+<hr>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Place
+    </th>
+
+    <th>
+      Website
+    </th>
+
+    <th>
+      Cuisine
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @restaurants.each do |restaurant| %>
+  <tr>
+    <td>
+      <%= restaurant.id %>
+    </td>
+
+    <td>
+      <%= restaurant.place %>
+    </td>
+
+    <td>
+      <%= restaurant.website %>
+    </td>
+
+    <td>
+      <%= restaurant.cuisine %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(restaurant.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(restaurant.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/restaurants/<%= restaurant.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
