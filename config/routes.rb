@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #LANDING PAGE route
   
-  match("/", { :controller => "items", :action => "list", :via => "get" })
+  match("/", { :controller => "items", :action => "signin", :via => "get" })
   
   
   

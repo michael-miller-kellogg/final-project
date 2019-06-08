@@ -4,6 +4,11 @@ class ItemsController < ApplicationController
 
     render("item_templates/list.html.erb")
   end
+  
+  def signin
+    render("users/registrations/new.html.erb")
+  end
+  
 
   def details
     @item = Item.where({ :id => params.fetch("id_to_display") }).first
