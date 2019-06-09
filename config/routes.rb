@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   match("/favorites", { :controller => "favorites", :action => "list", :via => "get" })
   match("/favorites/:id_to_display", { :controller => "favorites", :action => "details", :via => "get" })
 
+  match("/user_favorites", { :controller => "favorites", :action => "user_favorites", :via => "get" })
+
 
 
   # UPDATE

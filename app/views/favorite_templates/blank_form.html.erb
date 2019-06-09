@@ -16,11 +16,16 @@
   </div>
 
   <div>
-    <label for="item_id">
-      Item
-    </label>
-
-    <input type="text" id="item_id" name="item_id" value="<%= @favorite.item_id %>">
+  <label for="item_dropdown">
+    Item
+  </label>
+      <select id="item_dropdown" name="item_id" id="item_id" >
+      <% Item.all.order({ :dish => :asc }).each do |a_item| %>
+        <option value="<%= a_item.id %>">
+          <%= a_item.dish %>
+        </option>
+      <% end %>
+  </select>
   </div>
 
   <button>

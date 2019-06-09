@@ -34,7 +34,8 @@ class Item < ApplicationRecord
                 a = a + review.rating.to_f
             end
         
-            return a/self.num_reviews
+            average = a/self.num_reviews
+            return average.round(2)
         end
     end
     

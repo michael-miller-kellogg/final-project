@@ -56,7 +56,7 @@ class ReviewsController < ApplicationController
     @review = Review.where({ :id => params.fetch("id_to_modify") }).first
 
     @review.item_id = params.fetch("item_id")
-    @review.user_id = params.fetch("user_id")
+    @review.user_id = current_user.id
     @review.rating = params.fetch("rating")
     @review.review = params.fetch("review")
     @review.orderagain = params.fetch("orderagain", false)

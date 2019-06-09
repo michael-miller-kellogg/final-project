@@ -22,22 +22,13 @@
   </div>
   
 
-  <div>
-
-  <label for="user_dropdown">
-    User
+  <label for="rating">
+      <p>Default range slider:</p>
+    <input type="range" min="1" max="5" name="rating" id="rating" value="<%=@review.rating%>" >
   </label>
-    <select id="user_dropdown" name="user_id" id="user_id" >
-      
-      
-      <% User.all.order({ :username => :asc }).each do |a_user| %>
-        <option value="<%= a_user.id %>">
-          <%= a_user.username %>
-        </option>
-      <% end %>
-    </select>
-  </div>
-
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+  
+  
   <div>
     <label for="rating">
       Rating (make this a slider or emoji counter?)

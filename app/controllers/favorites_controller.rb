@@ -11,6 +11,11 @@ class FavoritesController < ApplicationController
     render("favorite_templates/details.html.erb")
   end
 
+  def user_favorites
+    render("favorite_templates/user_favorites.html.erb")
+  end
+
+
   def blank_form
     @favorite = Favorite.new
 
@@ -20,7 +25,7 @@ class FavoritesController < ApplicationController
   def save_new_info
     @favorite = Favorite.new
 
-    @favorite.user_id = params.fetch("user_id")
+    @favorite.user_id = current_user.id
     @favorite.item_id = params.fetch("item_id")
 
     if @favorite.valid?
@@ -41,7 +46,7 @@ class FavoritesController < ApplicationController
   def save_edits
     @favorite = Favorite.where({ :id => params.fetch("id_to_modify") }).first
 
-    @favorite.user_id = params.fetch("user_id")
+    @favorite.user_id = current_user.id
     @favorite.item_id = params.fetch("item_id")
 
     if @favorite.valid?
