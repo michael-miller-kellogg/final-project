@@ -16,6 +16,28 @@
 #
 
 class Item < ApplicationRecord
+    
+    def num_reviews
+        return Review.where("item_id = ?", self.id).count
+    end
+    
+    
+    def average_review
+        
+        if self.num_reviews==0
+            return 0
+
+        else
+            
+            a = 0
+                Review.where("item_id =? ", self.id).each do |review|
+                a = a + review.rating.to_f
+            end
+        
+            return a/self.num_reviews
+        end
+    end
+    
     belongs_to :restaurant
     has_many :reviews, :dependent => :destroy
     has_many :favorites, :dependent => :destroy

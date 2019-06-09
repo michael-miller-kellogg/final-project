@@ -5,6 +5,17 @@ class ReviewsController < ApplicationController
     render("review_templates/list.html.erb")
   end
 
+  def item_reviews
+    
+    if Item.where("id =?", params.fetch("item_id")).first.nil?
+      redirect_to("/reviews") #need to add a validation message here!!!
+    else
+      @item = Item.where("id = ?", params.fetch("item_id")).first
+      @reviews = Review.where({ :item_id => params.fetch("item_id") })
+      render("review_templates/item_reviews.html.erb")
+    end
+  end
+
   def details
     @review = Review.where({ :id => params.fetch("id_to_display") }).first
 
@@ -21,7 +32,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
 
     @review.item_id = params.fetch("item_id")
-    @review.user_id = params.fetch("user_id")
+    @review.user_id = current_user.id
     @review.rating = params.fetch("rating")
     @review.review = params.fetch("review")
     @review.orderagain = params.fetch("orderagain", false)

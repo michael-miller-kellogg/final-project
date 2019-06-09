@@ -27,6 +27,15 @@
     </th>
 
     <th>
+      Number of reviews
+    </th>
+
+    <th>
+      Average review
+    </th>
+
+
+    <th>
       Vegetarian
     </th>
 
@@ -70,6 +79,18 @@
 
     <td>
       <%= item.description %>
+    </td>
+    
+    <td>
+      <%= item.num_reviews %>
+    </td>
+
+    <td>
+      <% if item.average_review==0 %>
+      No reviews yet
+      <% else %>
+      <%= item.average_review %>
+      <% end %>
     </td>
 
     <td>

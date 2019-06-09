@@ -95,13 +95,17 @@
     </th>
 
     <th>
-      Link to all details & reviews
+      Number of reviews
+    </th>
+   
+    <th>
+      Average review
     </th>
 
 
 
     <th>
-      blah
+      Link to all details & reviews
     </th>
   </tr>
 
@@ -153,10 +157,26 @@
     <td>
       $<%= item.price %>
     </td>
+    
+    
+    <td>
+      <%= item.num_reviews %>
+    </td>
 
     <td>
-      Average reviews go here!!!!
+      <% if item.average_review==0 %>
+      No reviews yet
+      <% else %>
+      <%= item.average_review %>
+      <% end %>
     </td>
+    
+    
+    <td>
+      <a href="/items/<%= item.id %>">
+        Show details
+    </a>
+    
     
     
 <% end %>

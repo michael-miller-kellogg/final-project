@@ -28,6 +28,8 @@
     User
   </label>
     <select id="user_dropdown" name="user_id" id="user_id" >
+      
+      
       <% User.all.order({ :username => :asc }).each do |a_user| %>
         <option value="<%= a_user.id %>">
           <%= a_user.username %>

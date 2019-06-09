@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   #LANDING PAGE route
   
-  match("/", { :controller => "items", :action => "signin", :via => "get" })
+  match("/", { :controller => "items", :action => "list", :via => "get" })
   
   
+  
+  #compiled item reviews
+  match("/item_reviews/:item_id", { :controller => "reviews", :action => "item_reviews", :via => "get" })
   
   # Routes for the Favorite resource:
 
@@ -14,6 +17,8 @@ Rails.application.routes.draw do
   # READ
   match("/favorites", { :controller => "favorites", :action => "list", :via => "get" })
   match("/favorites/:id_to_display", { :controller => "favorites", :action => "details", :via => "get" })
+
+
 
   # UPDATE
   match("/existing_favorite_form/:id_to_prefill", { :controller => "favorites", :action => "prefilled_form", :via => "get" })

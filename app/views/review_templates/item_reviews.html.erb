@@ -1,5 +1,5 @@
 <h1>
-  Review list
+  <%= @item.dish %>
 </h1>
 
 <a href="/new_review_form">
@@ -31,9 +31,16 @@
     </th>
 
     <th>
-      Order again?
+      Orderagain
     </th>
 
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
 
     <th>
     </th>
@@ -46,11 +53,11 @@
     </td>
 
     <td>
-      <%= Item.where("id=?", review.item_id).first.dish %>
+      <%= review.item_id %>
     </td>
 
     <td>
-      <%= User.where("id=?", review.user_id).first.username %>
+      <%= review.user_id %>
     </td>
 
     <td>
@@ -58,15 +65,19 @@
     </td>
 
     <td>
-      <%= review.review[0..15] %> ...
+      <%= review.review %>
     </td>
 
     <td>
-      <% if review.orderagain %>
-        Yes
-      <% else %>
-        No
-      <% end %>
+      <%= review.orderagain %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(review.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(review.updated_at) %> ago
     </td>
 
     <td>
