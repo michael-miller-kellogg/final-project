@@ -41,15 +41,11 @@
     Website
   </dt>
   <dd>
-    <%= @restaurant.website %>
+    <a href = "<%= @restaurant.website %>" >
+      <%= @restaurant.website %>
+    </a>
   </dd>
 
-  <dt>
-    Cuisine
-  </dt>
-  <dd>
-    <%= @restaurant.cuisine %>
-  </dd>
 
   <dt>
     Created at
@@ -58,12 +54,7 @@
     <%= time_ago_in_words(@restaurant.created_at) %> ago
   </dd>
 
-  <dt>
-    Updated at
-  </dt>
-  <dd>
-    <%= time_ago_in_words(@restaurant.updated_at) %> ago
-  </dd>
+
 </dl>
 
 <table>

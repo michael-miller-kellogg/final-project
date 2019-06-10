@@ -98,26 +98,27 @@
 
     <td>
       <% if item.vegetarian %>
-        Yes
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
       <% else %>
-        No
+        <%= Emoji.find_by_alias("x").raw %>
       <% end %>
       
     </td>
 
     <td>
+
       <% if item.vegan %>
-        Yes
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
       <% else %>
-        No
+        <%= Emoji.find_by_alias("x").raw %>
       <% end %>
     </td>
 
     <td>
       <% if item.glutenfree %>
-        Yes
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
       <% else %>
-        No
+        <%= Emoji.find_by_alias("x").raw %>
       <% end %>
     </td>
 

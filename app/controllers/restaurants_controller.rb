@@ -18,18 +18,28 @@ class RestaurantsController < ApplicationController
   end
 
   def save_new_info
+    
+    duplicate=false
+    Restaurant.all.each do |restaurant|
+      if restaurant.place == params.fetch("place").chomp
+        duplicate= true
+      end
+    end
+    
+
     @restaurant = Restaurant.new
+    
 
     @restaurant.place = params.fetch("place")
     @restaurant.website = params.fetch("website")
     @restaurant.cuisine = params.fetch("cuisine")
 
-    if @restaurant.valid?
+    if @restaurant.valid? && duplicate==false
       @restaurant.save
 
       redirect_to("/restaurants", { :notice => "Restaurant created successfully." })
     else
-      render("restaurant_templates/blank_form.html.erb")
+      render("restaurant_templates/blank_form.html.erb", { :notice => "This is a duplicate" }) 
     end
   end
 

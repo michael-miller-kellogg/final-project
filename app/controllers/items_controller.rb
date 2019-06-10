@@ -23,9 +23,15 @@ class ItemsController < ApplicationController
   end
 
   def save_new_info
+    duplicate=false
+    Item.all.each do |item|
+      if item.dish == params.fetch("dish").chomp
+        duplicate= true
+      end
+    end
+    
     @item = Item.new
-
-    #@item.place = params.fetch("restaurant")
+    
     @item.restaurant_id = params.fetch("restaurant_id")
     
     
@@ -38,7 +44,7 @@ class ItemsController < ApplicationController
     @item.size = params.fetch("size")
     @item.price = params.fetch("price")
 
-    if @item.valid?
+    if @item.valid? && duplicate==false
       @item.save
 
       redirect_to("/items", { :notice => "Item created successfully." })

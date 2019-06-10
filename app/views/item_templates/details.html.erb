@@ -102,11 +102,7 @@
 <table>
   <tr>
     <th>
-      ID
-    </th>
-
-    <th>
-      Item
+      Restaurant
     </th>
 
     <th>
@@ -130,29 +126,21 @@
     </th>
 
     <th>
-      Updated at
-    </th>
-
-    <th>
     </th>
   </tr>
 
   <% Review.where("item_id = ?", @item.id).each do |review| %>
   <tr>
     <td>
-      <%= review.id %>
+      <%= Restaurant.where("id = ?", @item.restaurant_id).first.place %>
     </td>
 
     <td>
-      <%= review.item_id %>
+      <%= User.where("id=?", review.user_id).first.username %>
     </td>
 
     <td>
-      <%= review.user_id %>
-    </td>
-
-    <td>
-      <%= review.rating %>
+      <%  review.rating %>
     </td>
 
     <td>
@@ -160,15 +148,15 @@
     </td>
 
     <td>
-      <%= review.orderagain %>
+      <% if review.orderagain %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
     </td>
 
     <td>
       <%= time_ago_in_words(review.created_at) %> ago
-    </td>
-
-    <td>
-      <%= time_ago_in_words(review.updated_at) %> ago
     </td>
 
     <td>

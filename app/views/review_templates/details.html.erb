@@ -41,7 +41,10 @@
     Rating
   </dt>
   <dd>
-    <%= @review.rating %>
+    <% num = @review.rating.to_i %>
+    <% 1.upto num do |v|  %>
+      <%= Emoji.find_by_alias("taco").raw %>
+    <% end %>
   </dd>
 
   <dt>
@@ -52,10 +55,14 @@
   </dd>
 
   <dt>
-    Orderagain
+    Order again
   </dt>
   <dd>
-    <%= @review.orderagain %>
+      <% if @review.orderagain %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
   </dd>
 
   <dt>
