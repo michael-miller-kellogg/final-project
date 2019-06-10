@@ -16,6 +16,12 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def item_review
+    @item = Item.where("id = ?", params.fetch("item_id")).first
+    render("review_templates/item_review.html.erb")
+  end
+
+
   def details
     @review = Review.where({ :id => params.fetch("id_to_display") }).first
 

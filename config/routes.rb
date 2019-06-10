@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #LANDING PAGE route
   
-  match("/", { :controller => "items", :action => "list", :via => "get" })
+  match("/", { :controller => "restaurants", :action => "list", :via => "get" })
   
   
   
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   # CREATE
   match("/new_review_form", { :controller => "reviews", :action => "blank_form", :via => "get" })
   match("/insert_review_record", { :controller => "reviews", :action => "save_new_info", :via => "post" })
+  match("/item_review/:item_id", { :controller => "reviews", :action => "item_review", :via => "get" })
 
   # READ
   match("/reviews", { :controller => "reviews", :action => "list", :via => "get" })
