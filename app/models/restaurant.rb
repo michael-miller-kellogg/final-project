@@ -36,7 +36,7 @@ class Restaurant < ApplicationRecord
             end
         
             average = a/self.num_reviews
-            return average.round(2)
+            return average.round(1)
         end
     end
     

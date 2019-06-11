@@ -16,9 +16,16 @@
   </div>
 
   <div>
-    <a href="/insert_favorite_record">
-      Favorite item
-    </a>
+
+<form method="post">
+<button formaction="/insert_favorite_record" id="item_id" name="item_id" value=<%=@item.id%> >
+  Create favorite
+</button>
+</form>
+    
+    
+    
+    
   </div>
 
   <div>

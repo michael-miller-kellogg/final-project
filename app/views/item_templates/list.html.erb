@@ -1,6 +1,10 @@
 <h1>
-  Item list
+  All Items
 </h1>
+
+<h2>
+  These are all the items that have been ordered by ActiveCampaigners
+</h2>
 
 <a href="/new_item_form"> 
   Add a new item
@@ -21,6 +25,10 @@
     <th>
       Dish
     </th>
+    
+    <th>
+      Size
+    </th>
 
     <th>
       Description
@@ -36,20 +44,17 @@
 
 
     <th>
-      Vegetarian
+      Vegetarian?
     </th>
 
     <th>
-      Vegan
+      Vegan?
     </th>
 
     <th>
-      Glutenfree
+      Gluten-free?
     </th>
 
-    <th>
-      Size
-    </th>
 
     <th>
       Price
@@ -73,11 +78,15 @@
     </td>
 
     <td>
-      <%= Restaurant.where("id = ?", item.restaurant_id).first.place %>
+      <%= item.restaurant_from %>
     </td>
 
     <td>
       <%= item.dish %>
+    </td>
+
+    <td>
+      <%= item.size %>
     </td>
 
     <td>
@@ -92,7 +101,8 @@
       <% if item.average_review==0 %>
       No reviews yet
       <% else %>
-      <%= item.average_review %>
+       <a href= "/items/<%= item.id %>">
+        <%= item.average_review %> - see all
       <% end %>
     </td>
 
@@ -122,9 +132,6 @@
       <% end %>
     </td>
 
-    <td>
-      <%= item.size %>
-    </td>
 
     <td>
       $<%= item.price %>

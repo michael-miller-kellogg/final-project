@@ -6,7 +6,7 @@
 
 <%= render("item_templates/validation_failures.html.erb") %>
 
-<form action="/insert_item_record" method="post">
+<form method="post">
   <div>
   <label for="restaurant_dropdown">
     Restaurant
@@ -63,8 +63,10 @@
     <label for="size">
       Size
     </label>
-
-    <input type="text" id="size" name="size" value="<%= @item.size %>">
+    <select id="size" name="size" value="<%= @item.size %>">
+      <option value="S">Small</option>
+      <option value="M">Medium</option>
+      <option value="L">Large</option>    
   </div>
 
   <div>
@@ -75,9 +77,14 @@
     <input type="text" id="price" name="price" value="<%= @item.price %>">
   </div>
 
-  <button>
+  <button formaction="/insert_item_record">
     Create item
   </button>
+  
+  <button formaction="/insert_item_record_review">
+    Create item & submit review
+  </button>
+  
 </form>
 
 <hr>

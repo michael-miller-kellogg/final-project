@@ -1,6 +1,7 @@
 <h1>
-  Restaurant list
+  All Restaurants
 </h1>
+<h2>These are all of the restaurants that have been added for reviews.</h2>
 
 <a href="/new_restaurant_form">
   Add a new restaurant
@@ -10,9 +11,6 @@
 
 <table>
   <tr>
-    <th>
-      ID
-    </th>
 
     <th>
       Place
@@ -40,9 +38,6 @@
 
   <% @restaurants.each do |restaurant| %>
   <tr>
-    <td>
-      <%= restaurant.id %>
-    </td>
 
     <td>
       <%= restaurant.place %>
@@ -57,7 +52,7 @@
     </td>
 
     <td>
-      <%= restaurant.average_review %> 
+      <%= restaurant.average_review.round(2) %> 
     </td>
 
     <td>

@@ -21,6 +21,9 @@ class Item < ApplicationRecord
         return Review.where("item_id = ?", self.id).count
     end
     
+    def restaurant_from
+        return Restaurant.where("id=?", self.restaurant_id).first.place
+    end
     
     def average_review
         

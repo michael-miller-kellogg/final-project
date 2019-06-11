@@ -50,6 +50,8 @@ class RestaurantsController < ApplicationController
   end
 
   def save_edits
+    
+    
     @restaurant = Restaurant.where({ :id => params.fetch("id_to_modify") }).first
 
     @restaurant.place = params.fetch("place")

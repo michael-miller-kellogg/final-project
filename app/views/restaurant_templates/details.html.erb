@@ -48,7 +48,7 @@
 
 
   <dt>
-    Created at
+    Created
   </dt>
   <dd>
     <%= time_ago_in_words(@restaurant.created_at) %> ago
@@ -60,16 +60,15 @@
 <table>
   <tr>
     <th>
-      ID
-    </th>
-
-
-    <th>
       Dish
     </th>
 
     <th>
       Description
+    </th>
+
+    <th>
+      Size
     </th>
 
     <th>
@@ -82,10 +81,6 @@
 
     <th>
       Glutenfree
-    </th>
-
-    <th>
-      Size
     </th>
 
     <th>
@@ -110,19 +105,17 @@
   <% Item.where("restaurant_id = ?", @restaurant.id).each do |item| %>
   <tr>
     <td>
-      <%= item.id %>
-    </td>
-
-
-
-    <td>
       <%= item.dish %>
     </td>
 
     <td>
       <%= item.description %>
     </td>
-
+    
+    <td>
+      <%= item.size %>
+    </td>
+    
     <td>
       <% if item.vegetarian %>
         Yes
@@ -148,9 +141,7 @@
       <% end %>
     </td>
 
-    <td>
-      <%= item.size %>
-    </td>
+
 
     <td>
       $<%= item.price %>

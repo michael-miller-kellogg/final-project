@@ -56,6 +56,8 @@ Rails.application.routes.draw do
   # CREATE
   match("/new_item_form", { :controller => "items", :action => "blank_form", :via => "get" })
   match("/insert_item_record", { :controller => "items", :action => "save_new_info", :via => "post" })
+  match("/insert_item_record_review", { :controller => "items", :action => "save_new_info_addreview", :via => "post" })
+
 
   # READ
   match("/items", { :controller => "items", :action => "list", :via => "get" })
@@ -71,6 +73,11 @@ Rails.application.routes.draw do
   #------------------------------
 
   devise_for :users
+  
+  #self user links
+  match("/my_profile", { :controller => "users", :action => "my_profile", :via => "get" })
+  
+  
   # Routes for the Restaurant resource:
 
   # CREATE

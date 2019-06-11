@@ -1,5 +1,5 @@
 <h1>
-  Review #<%= @review.id %> details
+  <%= User.where("id=?", @review.user_id).first.username %>'s review of <%= Item.where("id=?", @review.item_id).first.dish%>
 </h1>
 
 <div>
@@ -9,12 +9,16 @@
     </a>
   </div>
 
+
   <div>
+  <% if @review.user_id == current_user.id %>
     <a href="/existing_review_form/<%= @review.id %>">
       Edit review
     </a>
+  <% else %>
+    Edit review (only for submitted user)
+  <% end %>
   </div>
-
   <div>
     <a href="/delete_review/<%= @review.id %>">
       Delete review
@@ -34,7 +38,7 @@
     User
   </dt>
   <dd>
-    <%= @review.user_id %>
+    <%= User.where("id=?", @review.user_id).first.username %>
   </dd>
 
   <dt>
