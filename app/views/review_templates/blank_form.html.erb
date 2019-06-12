@@ -6,7 +6,7 @@
 
 <%= render("review_templates/validation_failures.html.erb") %>
 
-<form action="/insert_review_record" method="post">
+<form action="/insert_review_record" method="post" enctype="multipart/form-data">
   
   <div>
   <label for="item_dropdown">
@@ -41,6 +41,13 @@
       Would you order it again?
     </label>
     <input id="orderagain" name="orderagain" type="checkbox" <%= "checked" if @review.orderagain %>>
+
+<div>
+  <label for="photo">
+    Upload a photo?
+  </label>
+  <input type="file" id="photo" name="photo" class="form-control">
+</div>
 
   </div>
 
