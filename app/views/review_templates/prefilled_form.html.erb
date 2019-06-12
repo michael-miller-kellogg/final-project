@@ -8,27 +8,24 @@
 
 <form action="/update_review_record/<%= @review.id %>" method="post">
   <div>
-    <label for="item_id">
-      Item
-    </label>
-
-    <input type="text" id="item_id" name="item_id" value="<%= @review.item_id %>">
+  <label for="item_dropdown">
+    Item
+  </label>
+      <select id="item_dropdown" name="item_id" id="item_id" >
+      <% Item.all.order({ :dish => :asc }).each do |a_item| %>
+        <option value="<%= a_item.id %>">
+          <%= a_item.dish %>
+        </option>
+      <% end %>
+  </select>
   </div>
 
-  <div>
-    <label for="user_id">
-      User
-    </label>
-
-    <input type="text" id="user_id" name="user_id" value="<%= @review.user_id %>">
-  </div>
 
   <div>
-    <label for="rating">
-      Rating
-    </label>
-
-    <input type="text" id="rating" name="rating" value="<%= @review.rating %>">
+  <label for="rating">
+      <p>Default range slider:</p>
+    <input type="range" min="1" max="5" name="rating" id="rating" value="<%=@review.rating%>" >
+  </label>
   </div>
 
   <div>
@@ -40,10 +37,11 @@
   </div>
 
   <div>
-    <input id="orderagain" name="orderagain" type="checkbox" value="1" <%= "checked" if @review.orderagain %>>
     <label for="orderagain">
-      Orderagain
+      Would you order it again?
     </label>
+    <input id="orderagain" name="orderagain" type="checkbox" value="1" <%= "checked" if @review.orderagain %>>
+
   </div>
 
   <button>
