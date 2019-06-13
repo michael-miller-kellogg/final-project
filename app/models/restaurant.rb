@@ -12,6 +12,7 @@
 
 class Restaurant < ApplicationRecord
     
+    
     def num_reviews
         
         num=0

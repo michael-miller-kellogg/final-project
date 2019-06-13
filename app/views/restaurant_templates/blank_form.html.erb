@@ -6,7 +6,7 @@
 
 <%= render("restaurant_templates/validation_failures.html.erb") %>
 
-<form action="/insert_restaurant_record" method="post">
+<form method="post">
   <div>
     <label for="place">
       Place
@@ -30,10 +30,15 @@
 
     <input type="text" id="cuisine" name="cuisine" value="<%= @restaurant.cuisine %>">
   </div>
-
-  <button>
+<br>
+  <button formaction="/insert_restaurant_record" type="button" class= "btn btn-primary btn-lg btn-block">
     Create restaurant
   </button>
+  
+  <button formaction="/insert_restaurant_record_item" type="button" class= "btn btn-secondary btn-lg btn-block">
+    Create restaurant & add item
+  </button>
+  
 </form>
 
 <hr>
@@ -41,3 +46,5 @@
 <a href="/restaurants">
   Go back
 </a>
+
+

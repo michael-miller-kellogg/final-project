@@ -30,10 +30,9 @@
   
   <div>
     <label for="review">
-      Review (make this a large text box)
+      Review
     </label>
-
-    <input type="text" id="review" name="review" value="<%= @review.review %>">
+    <textarea type="text" cols="40" rows="5" id="review" name="review" value="<%= @review.review %>"></textarea>
   </div>
 
   <div>
@@ -50,11 +49,15 @@
 </div>
 
   </div>
-
-  <button>
+<br>
+<div>
+  <button type="button" class= "btn btn-primary btn-lg btn-block">
     Create review
   </button>
+</div>
 </form>
+
+
 
 <hr>
 

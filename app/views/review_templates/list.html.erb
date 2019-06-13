@@ -1,7 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-11">
 <h1>
-  All Reviews
+  All Reviews <%=Emoji.find_by_alias("clipboard").raw %>
 </h1>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-xs-11">
 <h2>
   These are all the reviews ActiveCampaigners have submitted.
 </h2>
@@ -9,9 +16,15 @@
 <a href="/new_review_form">
   Add a review
 </a>
+    </div>
+  </div>
 
+<div class="row">
+  <div class="col-xs-5">
+  </div>
+
+  <div class="col-xs-19">
 <hr>
-
 <table>
   <tr>
     <th>
@@ -57,7 +70,7 @@
       <%= User.where("id=?", review.user_id).first.username %>
     </td>
 
-    <td>
+    <td> 
       <%= review.rating %>
     </td>
 
@@ -81,3 +94,11 @@
   </tr>
   <% end %>
 </table>
+</div>
+
+  <div class="col-xs-1">
+    
+  </div>
+</div>
+
+</div>

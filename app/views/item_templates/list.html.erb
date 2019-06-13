@@ -1,13 +1,52 @@
 <h1>
-  All Items
+  All Items <%=Emoji.find_by_alias("stew").raw %>
 </h1>
-
 <h2>
   These are all the items that have been ordered by ActiveCampaigners.
 </h2>
 
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Narrow results</a>
+</p>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body">
+<%= search_form_for @q do |f| %>
+
+  <div class="form-group">
+
+    <%= f.label :dish_cont %>
+    <%= f.text_field :dish_cont, :class => "form-control" %>
+
+    <div class="row"> 
+      <div class="col">
+    <%= f.label :vegetarian_eq, "Vegetarian?" %>
+    <%= f.select :vegetarian_eq, [['Yes', true], ['No', false]], :class => "form-control", :placeholder => "Enter a few characters" %>
+      </div>
+      
+      <div class="col">
+    <%= f.label :vegan_eq, "Vegan?" %>
+    <%= f.select :vegan_eq, [['Yes', true], ['No', false]], :class => "form-control", :placeholder => "Enter a few characters" %>
+      </div>
+      
+      <div class="col">
+    <%= f.label :glutenfree_eq, "Gluten-free?" %>
+    <%= f.select :glutenfree_eq, [['Yes', true], ['No', false]], :class => "form-control", :placeholder => "Enter a few characters" %>
+      </div>
+    </div>   
+    <br>
+    <button type="submit" class="btn btn-primary">Search</button>
+    <%= f.submit %>
+    <% end %>
+  </div>
+  </div>
+  </div>
+</div>
+</div>
+
 <a href="/new_item_form"> 
-  Add a new item
+  Don't see an item listed? Add it here!
 </a>
 
 <hr>
@@ -28,10 +67,6 @@
     
     <th>
       Size
-    </th>
-
-    <th>
-      Description
     </th>
 
     <th>
@@ -89,9 +124,6 @@
       <%= item.size %>
     </td>
 
-    <td>
-      <%= item.description %>
-    </td>
     
     <td>
       <%= item.num_reviews %>

@@ -1,8 +1,34 @@
 class RestaurantsController < ApplicationController
   def list
-    @restaurants = Restaurant.all
-
+    @q = Restaurant.ransack(params[:q])
+    @restaurants = @q.result(:distinct => true).includes(:items)
     render("restaurant_templates/list.html.erb")
+  end
+
+  def save_new_info_additem
+        
+    duplicate=false
+    Restaurant.all.each do |restaurant|
+      if restaurant.place == params.fetch("place").chomp
+        duplicate= true
+      end
+    end
+    
+
+    @restaurant = Restaurant.new
+    
+
+    @restaurant.place = params.fetch("place")
+    @restaurant.website = params.fetch("website")
+    @restaurant.cuisine = params.fetch("cuisine")
+
+    if @restaurant.valid? && duplicate==false
+      @restaurant.save
+
+      redirect_to("/item_templates/blank_form.html.erb", { :notice => "Restaurant created successfully." })
+    else
+      render("restaurant_templates/blank_form.html.erb", { :notice => "This is a duplicate" }) 
+    end
   end
 
   def details

@@ -83,6 +83,8 @@ Rails.application.routes.draw do
   # CREATE
   match("/new_restaurant_form", { :controller => "restaurants", :action => "blank_form", :via => "get" })
   match("/insert_restaurant_record", { :controller => "restaurants", :action => "save_new_info", :via => "post" })
+  match("/insert_restaurant_record_item", { :controller => "restaurants", :action => "save_new_info_additem", :via => "post" })
+
 
   # READ
   match("/restaurants", { :controller => "restaurants", :action => "list", :via => "get" })

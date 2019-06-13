@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def list
-    @items = Item.all
+    @q = Item.ransack(params[:q])
+    @items = @q.result(:distinct => true).includes(:reviews, :favorites)
 
     render("item_templates/list.html.erb")
   end
