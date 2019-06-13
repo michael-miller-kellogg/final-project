@@ -1,3 +1,4 @@
+<% if @favorites.any? %>
 <h1>My favorites</h1>
 
 
@@ -51,6 +52,12 @@
   <% end %>
 </table>
 
+<% else %>
+You have no favorites yet!
+
+<% end%>
+
+<% if @reviews.any? %>
 
 <h1>My reviews</h1>
 
@@ -121,3 +128,4 @@
   </tr>
   <% end %>
 </table>
+ <% end %>

@@ -31,7 +31,7 @@ class FavoritesController < ApplicationController
     if @favorite.valid?
       @favorite.save
 
-      redirect_to("/favorites", { :notice => "Favorite created successfully." })
+      redirect_to("/my_profile", { :notice => "Favorite created successfully." })
     else
       render("favorite_templates/blank_form.html.erb")
     end

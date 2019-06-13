@@ -1,9 +1,9 @@
 <h1>
   All Items <%=Emoji.find_by_alias("stew").raw %>
 </h1>
-<h2>
+<h6>
   These are all the items that have been ordered by ActiveCampaigners.
-</h2>
+</h6>
 
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Narrow results</a>
@@ -106,7 +106,7 @@
 
   </tr>
 
-  <% @items.each do |item| %>
+  <% @items.order({ :dish => :asc }).each do |item| %>
   <tr>
     <td>
       <%= item.id %>
