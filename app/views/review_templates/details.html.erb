@@ -1,16 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
 <h1>
   <%= User.where("id=?", @review.user_id).first.username %>'s review of <%= Item.where("id=?", @review.item_id).first.dish%>
 </h1>
+    </div>
+  </div>
 
-<div>
-  <div>
+
+  <div class="row">
+    <div class="col-sm-3">
     <a href="/reviews">
       Go back
     </a>
   </div>
 
+  <div class="col-sm-3">
 
-  <div>
   <% if @review.user_id == current_user.id %>
     <a href="/existing_review_form/<%= @review.id %>">
       Edit review
@@ -19,19 +26,27 @@
     Edit review (only for submitted user)
   <% end %>
   </div>
-  <div>
+  
+  <div class="col-sm-3">
     <a href="/delete_review/<%= @review.id %>">
       Delete review
     </a>
   </div>
 </div>
 
-<dl>
+
+<div class="row">
+  <div class="col-xs-3">
+  </div>
+
+<table class="table">
+
+  <div class="col-md-12">
   <dt>
     Item
   </dt>
   <dd>
-    <%= @review.item_id %>
+    <%= Item.where("id=?", @review.item_id).first.dish %>
   </dd>
 
   <dt>
@@ -93,3 +108,4 @@
   <img src="<%= @review.photo %>" class="img-responsive">
   </div>
 <% end %>
+</table>

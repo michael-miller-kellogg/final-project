@@ -1,3 +1,6 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
 <h1>
   Edit item #<%= @item.id %>
 </h1>
@@ -36,28 +39,28 @@
 
     <input type="text" id="description" name="description" value="<%= @item.description %>">
   </div>
-
-  <div>
+<div class="row">
+  <div class="col">
     <input id="vegetarian" name="vegetarian" type="checkbox" value="1" <%= "checked" if @item.vegetarian %>>
     <label for="vegetarian">
       Vegetarian
     </label>
   </div>
 
-  <div>
+  <div class="col">
     <input id="vegan" name="vegan" type="checkbox" value="1" <%= "checked" if @item.vegan %>>
     <label for="vegan">
       Vegan
     </label>
   </div>
 
-  <div>
+  <div class="col">
     <input id="glutenfree" name="glutenfree" type="checkbox" value="1" <%= "checked" if @item.glutenfree %>>
     <label for="glutenfree">
       Glutenfree
     </label>
   </div>
-
+</div>
   <div>
     <label for="size">
       Size
@@ -77,7 +80,7 @@
     <input type="text" id="price" name="price" value="<%= @item.price %>">
   </div>
 
-  <button>
+  <button class= "btn btn-primary btn-lg btn-block">
     Update item
   </button>
 </form>

@@ -1,5 +1,8 @@
-<h1>
-  Edit review #<%= @review.id %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>
+  Edit your review
 </h1>
 
 <hr>
@@ -23,17 +26,24 @@
 
   <div>
   <label for="rating">
-      <p>Default range slider:</p>
-    <input type="range" min="1" max="5" name="rating" id="rating" value="<%=@review.rating%>" >
-  </label>
+      <p>Give it a rating:</p>
+      </label>
+    <select id="rating" name="rating" value="<%=@review.rating%>">
+      <option value= "1"> 1 - Terrible</option>
+      <option value= "2"> 2 - Meh</option>
+      <option value= "3"> 3 - Average</option>
+      <option value= "4"> 4 - Pretty good!</option>
+      <option value= "5"> 5 - Amazing!</option>
+    </select>
+
   </div>
 
   <div>
     <label for="review">
-      Review
+      Review:
     </label>
-
-    <input type="text" id="review" name="review" value="<%= @review.review %>">
+    <br>
+    <textarea type="text" cols="40" rows="5" id="review" name="review" value="<%= @review.review %>"></textarea>
   </div>
 
   <div>
@@ -44,7 +54,15 @@
 
   </div>
 
-  <button>
+<div>
+  <label for="photo">
+    Update photo?
+  </label>
+  <input type="file" id="photo" name="photo" class="form-control">
+</div>
+
+
+  <button class="btn btn-primary btn-lg btn-block">
     Update review
   </button>
 </form>

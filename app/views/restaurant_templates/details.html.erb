@@ -1,27 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
 <h1>
   <%= @restaurant.place %> 
 </h1>
+    </div>
+  </div>
 
-<div>
-  <div>
+<div class="row">
+  <div class="col-sm-3">
     <a href="/restaurants">
       Go back
     </a>
   </div>
 
-  <div>
+  <div class="col-sm-3">
     <a href="/existing_restaurant_form/<%= @restaurant.id %>">
       Edit restaurant
     </a>
   </div>
 
-  <div>
+  <div class="col-sm-3">
     <a href="/delete_restaurant/<%= @restaurant.id %>">
       Delete restaurant
     </a>
   </div>
   
-  <div>
+  <div class="col-sm-3">
     <a href="/new_item_form">
       Add an item?
     </a>
@@ -47,17 +52,10 @@
   </dd>
 
 
-  <dt>
-    Created
-  </dt>
-  <dd>
-    <%= time_ago_in_words(@restaurant.created_at) %> ago
-  </dd>
-
 
 </dl>
 
-<table>
+<table class="table">
   <tr>
     <th>
       Dish
@@ -118,26 +116,26 @@
     
     <td>
       <% if item.vegetarian %>
-        Yes
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
       <% else %>
-        No
+        <%= Emoji.find_by_alias("x").raw %>
       <% end %>
       
     </td>
 
     <td>
       <% if item.vegan %>
-        Yes
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
       <% else %>
-        No
+        <%= Emoji.find_by_alias("x").raw %>
       <% end %>
     </td>
 
     <td>
       <% if item.glutenfree %>
-        Yes
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
       <% else %>
-        No
+        <%= Emoji.find_by_alias("x").raw %>
       <% end %>
     </td>
 

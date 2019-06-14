@@ -1,12 +1,13 @@
-<% if @favorites.any? %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <% if @favorites.any? %>
 <h1>My favorites</h1>
 
 
-<table>
+<table class="table">
   <tr>
-    <th>
-      User
-    </th>
+
 
     <th>
       Item
@@ -27,9 +28,6 @@
   <% @favorites.each do |favorite| %>
   <tr>
 
-    <td>
-      <%= current_user.username %>
-    </td>
 
     <td>
       <%= Item.where("id=?", favorite.item_id).first.dish %>
@@ -45,7 +43,7 @@
 
     <td>
       <a href="/favorites/<%= favorite.id %>">
-        Show details
+        See details
       </a>
     </td>
   </tr>
@@ -62,16 +60,13 @@ You have no favorites yet!
 <h1>My reviews</h1>
 
 
-<table>
+<table class="table">
   <tr>
 
     <th>
       Item
     </th>
 
-    <th>
-      User
-    </th>
 
     <th>
       Rating
@@ -97,9 +92,7 @@ You have no favorites yet!
       <%= Item.where("id=?", review.item_id).first.dish %>
     </td>
 
-    <td>
-      <%= current_user.username %>
-    </td>
+
 
     <td>
     <% num = review.rating.to_i %>
@@ -122,7 +115,7 @@ You have no favorites yet!
 
     <td>
       <a href="/reviews/<%= review.id %>">
-        Show details
+        See full review
       </a>
     </td>
   </tr>

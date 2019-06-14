@@ -1,6 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
 <h1>
   All Items <%=Emoji.find_by_alias("stew").raw %>
 </h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-12">  
 <h6>
   These are all the items that have been ordered by ActiveCampaigners.
 </h6>
@@ -19,6 +28,8 @@
     <%= f.label :dish_cont %>
     <%= f.text_field :dish_cont, :class => "form-control" %>
 
+<br>
+
     <div class="row"> 
       <div class="col">
     <%= f.label :vegetarian_eq, "Vegetarian?" %>
@@ -36,8 +47,9 @@
       </div>
     </div>   
     <br>
-    <button type="submit" class="btn btn-primary">Search</button>
-    <%= f.submit %>
+  <div class="column">
+    <%= f.submit "Search", class: "btn btn-primary"%>
+  </div>
     <% end %>
   </div>
   </div>
@@ -48,14 +60,13 @@
 <a href="/new_item_form"> 
   Don't see an item listed? Add it here!
 </a>
+    </div>
 
 <hr>
 
-<table>
+<table class="table">
   <tr>
-    <th>
-      ID
-    </th>
+
 
     <th>
       Restaurant
@@ -95,9 +106,6 @@
       Price
     </th>
 
-    <th>
-      Link to all details & reviews
-    </th>
 
     <th>
       
@@ -108,9 +116,7 @@
 
   <% @items.order({ :dish => :asc }).each do |item| %>
   <tr>
-    <td>
-      <%= item.id %>
-    </td>
+
 
     <td>
       <%= item.restaurant_from %>
@@ -134,7 +140,7 @@
       No reviews yet
       <% else %>
        <a href= "/items/<%= item.id %>">
-        <%= item.average_review %> - see all
+        <%= item.average_review.round(1) %> - see all
       <% end %>
     </td>
 
@@ -167,11 +173,6 @@
 
     <td>
       $<%= item.price %>
-    </td>
-
-    <td>
-      <a href= "/items/<%= item.id %>">
-        See reviews
     </td>
 
     <td>

@@ -72,6 +72,13 @@ class ReviewsController < ApplicationController
     @review.rating = params.fetch("rating")
     @review.review = params.fetch("review")
     @review.orderagain = params.fetch("orderagain", false)
+    
+    if params[:photo].present?
+      @review.photo = params.fetch("photo")
+    else
+      @review.photo = "1"
+    end
+
 
     if @review.valid?
       @review.save

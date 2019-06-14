@@ -8,7 +8,8 @@
 
     <!-- Connect the latest light.css to override browser default styles. -->
     <!-- You should replace this with a real stylesheet ASAP; probably Bootstrap, commented out below. -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <!-- Connect Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -23,18 +24,25 @@
     <!-- START BOOTSTRAP -->
     <!-- Connect Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Connect Bootstrap JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <!-- Make it responsive to small screens
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible content=IE=edge" />
     <!-- END BOOTSTRAP -->
+    <style>
+      body { padding-bottom: 70px}
+    </style>
+
+
   </head>
 
   <body>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
   <div class="container">
     <nav class="navbar navbar-light bg-light">
@@ -99,11 +107,13 @@
           </li>
         <% end %>
       </ul>
+      </div>
 </nav>
+
 
     <!-- ↓↓↓ Your view templates all get plugged in below ↓↓↓ -->
     <%= yield %>
     <!-- ↑↑↑ Your view templates all get plugged in above ↑↑↑ -->
-    
+  </div>  
   </body>
 </html>

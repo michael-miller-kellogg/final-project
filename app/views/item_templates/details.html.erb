@@ -1,38 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
 <h1>
   <%= @item.dish %> details
 </h1>
+    </div>
+  </div>
 
-<div>
-  <div>
+
+<div class="row">
+  <div class="col-sm-3">
     <a href="/items">
       Go back
     </a>
   </div>
 
-  <div>
+  <div class="col-sm-3">
     <a href="/existing_item_form/<%= @item.id %>">
       Edit item
     </a>
   </div>
 
-  <div>
-
-<form method="post">
-<button formaction="/insert_favorite_record" id="item_id" name="item_id" value=<%=@item.id%> >
-  Create favorite
-</button>
-</form>
-    
-    
-    
-    
-  </div>
-
-  <div>
+  <div class="col-sm-3">
     <a href="/delete_item/<%= @item.id %>">
       Delete item
     </a>
   </div>
+<br>
+
+
 </div>
 
 <dl>
@@ -62,9 +58,9 @@
   </dt>
   <dd>
       <% if @item.vegetarian %>
-        Yes
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
       <% else %>
-        No
+        <%= Emoji.find_by_alias("x").raw %>
       <% end %>
   </dd>
 
@@ -73,9 +69,9 @@
   </dt>
   <dd>
       <% if @item.vegan %>
-        Yes
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
       <% else %>
-        No
+        <%= Emoji.find_by_alias("x").raw %>
       <% end %>
   </dd>
 
@@ -84,9 +80,9 @@
   </dt>
   <dd>
     <% if @item.glutenfree %>
-        Yes
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
     <% else %>
-        No
+        <%= Emoji.find_by_alias("x").raw %>
     <% end %>
   </dd>
 
@@ -104,9 +100,17 @@
     $<%= @item.price %>
   </dd>
 </dl>
+<div>
+  
+<form method="post">
+<button class="btn btn-primary btn-lg btn-block" formaction="/insert_favorite_record" id="item_id" name="item_id" value=<%=@item.id%> >
+  Favorite this item
+</button>
+</form>
+  </div>
 
 
-<table>
+<table class="table">
   <tr>
     <th>
       Restaurant
@@ -129,7 +133,7 @@
     </th>
 
     <th>
-      Created at
+      Submitted
     </th>
 
     <th>
@@ -151,7 +155,7 @@
     </td>
 
     <td>
-      <%= review.review %>
+      <%= review.review[0..15] %>...
     </td>
 
     <td>
