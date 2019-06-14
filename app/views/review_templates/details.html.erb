@@ -22,16 +22,18 @@
     <a href="/existing_review_form/<%= @review.id %>">
       Edit review
     </a>
-  <% else %>
-    Edit review (only for submitted user)
-  <% end %>
-  </div>
-  
-  <div class="col-sm-3">
+    <div class="col-sm-3">
     <a href="/delete_review/<%= @review.id %>">
       Delete review
     </a>
   </div>
+  <% else %>
+    Edit review (only for submitted user)
+    
+  <% end %>
+  </div>
+  
+
 </div>
 
 
