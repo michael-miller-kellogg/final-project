@@ -151,7 +151,10 @@
     </td>
 
     <td>
-      <%  review.rating %>
+    <% num = review.rating.to_i %>
+    <% 1.upto num do |v|  %>
+      <%= Emoji.find_by_alias("taco").raw %>
+    <% end %>
     </td>
 
     <td>
