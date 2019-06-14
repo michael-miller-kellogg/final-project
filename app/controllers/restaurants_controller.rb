@@ -25,7 +25,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.valid? && duplicate==false
       @restaurant.save
 
-      redirect_to("/item_templates/blank_form.html.erb", { :notice => "Restaurant created successfully." })
+      redirect_to("/new_item_form", { :notice => "Restaurant created successfully." })
     else
       render("restaurant_templates/blank_form.html.erb", { :notice => "This is a duplicate" }) 
     end
