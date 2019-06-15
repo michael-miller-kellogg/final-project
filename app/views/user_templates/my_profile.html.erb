@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <% if @favorites.any? %>
+<h1>My favorites</h1>
+
+
+<table class="table">
+  <tr>
+
+
+    <th>
+      Item
+    </th>
+
+    <th>
+      Restaurant
+    </th>
+
+    <th>
+      Favorited at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @favorites.each do |favorite| %>
+  <tr>
+
+
+    <td>
+      <%= Item.where("id=?", favorite.item_id).first.dish %>
+    </td>
+
+    <td>
+      <%= Item.where("id=?", favorite.item_id).first.restaurant_from %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(favorite.created_at) %> ago
+    </td>
+
+    <td>
+      <a href="/favorites/<%= favorite.id %>">
+        See details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<% else %>
+You have no favorites yet!
+
+<% end%>
+
+<% if @reviews.any? %>
+
+<h1>My reviews</h1>
+
+
+<table class="table">
+  <tr>
+
+    <th>
+      Item
+    </th>
+
+
+    <th>
+      Rating
+    </th>
+
+    <th>
+      Review
+    </th>
+
+    <th>
+      Order again?
+    </th>
+
+
+    <th>
+    </th>
+  </tr>
+
+  <% @reviews.each do |review| %>
+  <tr>
+
+    <td>
+      <%= Item.where("id=?", review.item_id).first.dish %>
+    </td>
+
+
+
+    <td>
+    <% num = review.rating.to_i %>
+    <% 1.upto num do |v|  %>
+      <%= Emoji.find_by_alias("taco").raw %>
+    <% end %>
+    </td>
+
+    <td>
+      <%= review.review[0..15] %> ...
+    </td>
+
+    <td>
+      <% if review.orderagain %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+    </td>
+
+    <td>
+      <a href="/reviews/<%= review.id %>">
+        See full review
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
+ <% end %>

@@ -1,0 +1,64 @@
+<h1>
+  Edit review #<%= @review.id %>
+</h1>
+
+<hr>
+
+<%= render("review_templates/validation_failures.html.erb") %>
+
+<form action="/insert_review_record" method="post">
+  
+  <div>
+  <label for="item_dropdown">
+    Item
+  </label>
+      <select id="item_dropdown" name="item_id" id="item_id" >
+      <% Item.all.order({ :dish => :asc }).each do |a_item| %>
+        <option value="<%= a_item.id %>">
+          <%= a_item.dish %>
+        </option>
+      <% end %>
+  </select>
+  </div>
+
+  <div>
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" value="<%= @review.user_id %>">
+  </div>
+
+  <div>
+    <label for="rating">
+      Rating
+    </label>
+
+    <input type="text" id="rating" name="rating" value="<%= @review.rating %>">
+  </div>
+
+  <div>
+    <label for="review">
+      Review
+    </label>
+
+    <input type="text" id="review" name="review" value="<%= @review.review %>">
+  </div>
+
+  <div>
+    <input id="orderagain" name="orderagain" type="checkbox" value="1" <%= "checked" if @review.orderagain %>>
+    <label for="orderagain">
+      Orderagain
+    </label>
+  </div>
+
+  <button>
+    Update review
+  </button>
+</form>
+
+<hr>
+
+<a href="/reviews">
+  Go back
+</a>

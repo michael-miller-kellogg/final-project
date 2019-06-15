@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Change Me!</title>
+    <title>ActiveCampaign  Reviews</title>
 
     <!-- Expand the characters we can use beyond basic ASCII 🎉 -->
     <meta charset="utf-8">
 
     <!-- Connect the latest light.css to override browser default styles. -->
     <!-- You should replace this with a real stylesheet ASAP; probably Bootstrap, commented out below. -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <!-- Connect Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -22,23 +23,97 @@
 
     <!-- START BOOTSTRAP -->
     <!-- Connect Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Connect Bootstrap JavaScript -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <!-- Make it responsive to small screens -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible content=IE=edge" />
     <!-- END BOOTSTRAP -->
+    <style>
+      body { padding-bottom: 70px}
+    </style>
+
+
   </head>
 
   <body>
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container">
+    <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">
+      FoodaReviews
+    </a></nav>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsible-nav-links">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Resources
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a href="/restaurants" class="dropdown-item">
+              Restaurants
+            </a>
+            <a href="/items" class="dropdown-item">
+              Items
+            </a>
+            <a href="/reviews" class="dropdown-item">
+              Reviews
+            </a>
+
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <% if current_user.blank? %>
+          <li class="nav-item">
+            <a href="/users/sign_in" class="nav-link">
+              Sign in
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/users/sign_up" class="nav-link">
+              Sign up
+            </a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a href="/users/edit" class="nav-link">
+              Edit profile
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/users/sign_out" data-method="delete" class="nav-link">
+              Sign out
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/my_profile" class="nav-link">
+              See my profile
+            </a>
+          </li>
+        <% end %>
+      </ul>
+      </div>
+</nav>
+
+
     <!-- ↓↓↓ Your view templates all get plugged in below ↓↓↓ -->
     <%= yield %>
     <!-- ↑↑↑ Your view templates all get plugged in above ↑↑↑ -->
-    
+  </div>  
   </body>
 </html>

@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+<h1>
+  <%= User.where("id=?", @review.user_id).first.username %>'s review of <%= Item.where("id=?", @review.item_id).first.dish%>
+</h1>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-3">
+    <a href="/reviews">
+      Go back
+    </a>
+  </div>
+
+  <div class="col-sm-3">
+
+  <% if @review.user_id == current_user.id %>
+    <a href="/existing_review_form/<%= @review.id %>">
+      Edit review
+    </a>
+    <div class="col-sm-3">
+    <a href="/delete_review/<%= @review.id %>">
+      Delete review
+    </a>
+  </div>
+  <% else %>
+    Edit review (only for submitted user)
+    
+  <% end %>
+  </div>
+  
+
+</div>
+
+
+<div class="row">
+  <div class="col-xs-3">
+  </div>
+
+<table class="table">
+
+  <div class="col-md-12">
+  <dt>
+    Item
+  </dt>
+  <dd>
+    <%= Item.where("id=?", @review.item_id).first.dish %>
+  </dd>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= User.where("id=?", @review.user_id).first.username %>
+  </dd>
+
+  <dt>
+    Rating
+  </dt>
+  <dd>
+    <% num = @review.rating.to_i %>
+    <% 1.upto num do |v|  %>
+      <%= Emoji.find_by_alias("taco").raw %>
+    <% end %>
+  </dd>
+
+  <dt>
+    Review
+  </dt>
+  <dd>
+    <%= @review.review %>
+  </dd>
+
+  <dt>
+    Order again
+  </dt>
+  <dd>
+      <% if @review.orderagain %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@review.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@review.updated_at) %> ago
+  </dd>
+</dl>
+
+
+<% if @review.photo == "1" %>
+  No photo provided
+<% else %>
+  <dt>Photo</dt>
+  <div>
+  <img src="<%= @review.photo %>" class="img-responsive">
+  </div>
+<% end %>
+</table>

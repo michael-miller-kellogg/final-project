@@ -11,10 +11,15 @@ gem "devise"
 gem "faker", :git => "https://github.com/stympy/faker.git", :branch => "master"
 gem "jbuilder", "~> 2.5"
 gem "puma", "~> 3.7"
+gem "gemoji"
 gem "rails", "~> 5.1.5"
 gem "sass-rails", "~> 5.0"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"
+gem "carrierwave"
+gem "cloudinary"
+gem "ransack"
+
 
 group :production do
   gem "pg"

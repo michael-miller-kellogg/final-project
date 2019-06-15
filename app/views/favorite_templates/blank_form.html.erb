@@ -1,0 +1,40 @@
+<h1>
+  Add a new favorite
+</h1>
+
+<hr>
+
+<%= render("favorite_templates/validation_failures.html.erb") %>
+
+<form action="/insert_favorite_record" method="post">
+  <div>
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" value="<%= @favorite.user_id %>">
+  </div>
+
+  <div>
+  <label for="item_dropdown">
+    Item
+  </label>
+      <select id="item_dropdown" name="item_id" id="item_id" >
+      <% Item.all.order({ :dish => :asc }).each do |a_item| %>
+        <option value="<%= a_item.id %>">
+          <%= a_item.dish %>
+        </option>
+      <% end %>
+  </select>
+  </div>
+
+  <button>
+    Create favorite
+  </button>
+
+
+<hr>
+
+<a href="/favorites">
+  Go back
+</a>

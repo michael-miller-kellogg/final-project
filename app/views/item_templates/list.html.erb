@@ -1,0 +1,188 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+<h1>
+  All Items <%=Emoji.find_by_alias("stew").raw %>
+</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-12">  
+<h6>
+  These are all the items that have been ordered by ActiveCampaigners.
+</h6>
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Narrow results</a>
+</p>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body">
+<%= search_form_for @q do |f| %>
+
+  <div class="form-group">
+
+    <%= f.label :dish_cont %>
+    <%= f.text_field :dish_cont, :class => "form-control" %>
+
+<br>
+
+    <div class="row"> 
+      <div class="col">
+    <%= f.label :vegetarian_eq, "Vegetarian?" %>
+    <%= f.select :vegetarian_eq, [['Yes', true], ['No', false]], :class => "form-control", :placeholder => "Enter a few characters" %>
+      </div>
+      
+      <div class="col">
+    <%= f.label :vegan_eq, "Vegan?" %>
+    <%= f.select :vegan_eq, [['Yes', true], ['No', false]], :class => "form-control", :placeholder => "Enter a few characters" %>
+      </div>
+      
+      <div class="col">
+    <%= f.label :glutenfree_eq, "Gluten-free?" %>
+    <%= f.select :glutenfree_eq, [['Yes', true], ['No', false]], :class => "form-control", :placeholder => "Enter a few characters" %>
+      </div>
+    </div>   
+    <br>
+  <div class="column">
+    <%= f.submit "Search", class: "btn btn-primary"%>
+  </div>
+    <% end %>
+  </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<a href="/new_item_form"> 
+  Don't see an item listed? Add it here!
+</a>
+    </div>
+
+<hr>
+
+<table class="table">
+  <tr>
+
+
+    <th>
+      Restaurant
+    </th>
+
+    <th>
+      Dish
+    </th>
+    
+    <th>
+      Size
+    </th>
+
+    <th>
+      Number of reviews
+    </th>
+
+    <th>
+      Average review
+    </th>
+
+
+    <th>
+      Vegetarian?
+    </th>
+
+    <th>
+      Vegan?
+    </th>
+
+    <th>
+      Gluten-free?
+    </th>
+
+
+    <th>
+      Price
+    </th>
+
+
+    <th>
+      
+    </th>
+
+
+  </tr>
+
+  <% @items.order({ :dish => :asc }).each do |item| %>
+  <tr>
+
+
+    <td>
+      <%= item.restaurant_from %>
+    </td>
+
+    <td>
+      <%= item.dish %>
+    </td>
+
+    <td>
+      <%= item.size %>
+    </td>
+
+    
+    <td>
+      <%= item.num_reviews %>
+    </td>
+
+    <td>
+      <% if item.average_review==0 %>
+      No reviews yet
+      <% else %>
+       <a href= "/items/<%= item.id %>">
+        <%= item.average_review.round(1) %> - see all
+      <% end %>
+    </td>
+
+    <td>
+      <% if item.vegetarian %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+      
+    </td>
+
+    <td>
+
+      <% if item.vegan %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+    </td>
+
+    <td>
+      <% if item.glutenfree %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+    </td>
+
+
+    <td>
+      $<%= item.price %>
+    </td>
+
+    <td>
+      <a href= "/new_review_form">
+        Add a review
+    </td>
+
+
+
+
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+<h1>
+  Add a new review
+</h1>
+
+<hr>
+
+<%= render("review_templates/validation_failures.html.erb") %>
+
+<form action="/insert_review_record" method="post" enctype="multipart/form-data">
+  
+  <div>
+  <label for="item_dropdown">
+    Item
+  </label>
+      <select id="item_dropdown" name="item_id" id="item_id" >
+      <% Item.all.order({ :dish => :asc }).each do |a_item| %>
+        <option value="<%= a_item.id %>">
+          <%= a_item.dish %>
+        </option>
+      <% end %>
+  </select>
+  </div>
+  
+  <div>
+  <label for="rating">
+      <p>Give it a rating:</p>
+      </label>
+    <select id="rating" name="rating" value="<%=@review.rating%>">
+      <option value= "1"> 1 - Terrible</option>
+      <option value= "2"> 2 - Meh</option>
+      <option value= "3"> 3 - Average</option>
+      <option value= "4"> 4 - Pretty good!</option>
+      <option value= "5"> 5 - Amazing!</option>
+    </select>
+
+  </div>
+  
+  <div>
+    <label for="review">
+      Review:
+    </label>
+    <br>
+    <textarea type="text" cols="40" rows="5" id="review" name="review" value="<%= @review.review %>"></textarea>
+  </div>
+
+  <div>
+    <label for="orderagain">
+      Would you order it again?
+    </label>
+    <input id="orderagain" name="orderagain" type="checkbox" <%= "checked" if @review.orderagain %>>
+
+<div>
+  <label for="photo">
+    Upload a photo?
+  </label>
+  <input type="file" id="photo" name="photo" class="form-control">
+</div>
+
+  </div>
+<br>
+<div>
+  <button type="submit" class= "btn btn-primary btn-lg btn-block">
+    Create review
+  </button>
+</div>
+</form>
+
+
+
+<hr>
+
+<a href="/reviews">
+  Go back
+</a>

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+<h1>
+  Add a new restaurant <%=Emoji.find_by_alias("yum").raw%>
+</h1>
+
+<hr>
+
+<%= render("restaurant_templates/validation_failures.html.erb") %>
+
+<form method="post">
+  <div>
+    <label for="place">
+      Place name
+    </label>
+
+    <input type="text" id="place" name="place" value="<%= @restaurant.place %>">
+  </div>
+
+  <div>
+    <label for="website">
+      Website
+    </label>
+
+    <input type="text" id="website" name="website" value="<%= @restaurant.website %>">
+  </div>
+
+  <div>
+    <label for="cuisine">
+      Cuisine
+    </label>
+
+    <input type="text" id="cuisine" name="cuisine" value="<%= @restaurant.cuisine %>">
+  </div>
+<br>
+  <button formaction="/insert_restaurant_record" class= "btn btn-primary btn-lg btn-block">
+    Create restaurant
+  </button>
+  
+  <button formaction="/insert_restaurant_record_item" class= "btn btn-secondary btn-lg btn-block">
+    Create restaurant & add item
+  </button>
+  
+</form>
+
+<hr>
+
+<a href="/restaurants">
+  Go back
+</a>
+
+

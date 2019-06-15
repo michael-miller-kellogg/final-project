@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+<h1>
+  Add a new item
+</h1>
+
+<hr>
+
+<%= render("item_templates/validation_failures.html.erb") %>
+
+<form method="post">
+  <div>
+  <label for="restaurant_dropdown">
+    Restaurant
+  </label>
+  
+    <select id="restaurant_dropdown" name="restaurant_id" id="restaurant_id" >
+      <% Restaurant.all.order({ :place => :asc }).each do |a_restaurant| %>
+        <option value="<%= a_restaurant.id %>">
+          <%= a_restaurant.place %>
+        </option>
+      <% end %>
+    </select>
+  </div>
+  <div>
+    
+    <label for="dish">
+      Dish
+    </label>
+
+    <input type="text" id="dish" name="dish" value="<%= @item.dish %>">
+  </div>
+
+  <div>
+    <label for="description">
+      Description
+    </label>
+
+    <input type="text" id="description" name="description" value="<%= @item.description %>">
+  </div>
+
+  <div class="row">
+    <div class="col">
+    <input id="vegetarian" name="vegetarian" type="checkbox" <%= "checked" if @item.vegetarian %>>
+    <label for="vegetarian">
+      Vegetarian
+    </label>
+  </div>
+
+  <div class="col">
+    <input id="vegan" name="vegan" type="checkbox" <%= "checked" if @item.vegan %>>
+    <label for="vegan">
+      Vegan
+    </label>
+  </div>
+  
+  <div class="col">
+    <input id="glutenfree" name="glutenfree" type="checkbox" <%= "checked" if @item.glutenfree %>>
+    <label for="glutenfree">
+      Glutenfree
+    </label>
+</div>
+</div>
+
+<div> 
+    <label for="size">
+      Size
+    </label>
+   
+    
+    <select id="size" name="size" value="<%= @item.size %>">
+      <option value="S">Small</option>
+      <option value="M">Medium</option>
+      <option value="L">Large</option>  
+    </select>
+  </div>
+
+  <div>
+    <label for="price">
+      Price
+    </label>
+
+    <input type="text" id="price" name="price" value="<%= @item.price %>">
+  </div>
+<div>
+  
+<br>
+  <button formaction="/insert_item_record" type="submit" class= "btn btn-primary btn-lg btn-block">
+    Create item
+  </button>
+  
+  <button formaction="/insert_item_record_review" type="submit" class= "btn btn-secondary btn-lg btn-block">
+    Create item & submit review
+  </button>
+</div>
+</form>
+
+<hr>
+
+<a href="/items">
+  Go back
+</a>

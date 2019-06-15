@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+<h1>
+  All Restaurants added <%=Emoji.find_by_alias("yum").raw%>
+</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+<h6>These are all of the restaurants that have been added for reviews.</h6>
+
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Narrow results</a>
+</p>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body">
+        <%= search_form_for @q do |f| %>
+        <div class="form-group">
+          <%= f.label :place_cont %>
+          <%= f.text_field :place_cont, :class => "form-control" %>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Search</button>
+        <% f.submit%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="/new_restaurant_form">
+  Don't see a restaurant listed? Add it here!
+</a>
+    </div>
+  </div>
+
+
+<hr>
+
+<table class="table">
+  <tr>
+
+    <th>
+      Place
+    </th>
+
+    <th>
+      Website
+    </th>
+
+    <th>
+      Cuisine
+    </th>
+
+    <th>
+      Average review
+    </th>
+
+    <th>
+      Number of reviews
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @restaurants.each do |restaurant| %>
+  <tr>
+
+    <td>
+      <%= restaurant.place %>
+    </td>
+
+    <td>
+      <%= restaurant.website %>
+    </td>
+
+    <td>
+      <%= restaurant.cuisine %>
+    </td>
+
+    <td>
+      <%= restaurant.average_review.round(2) %> 
+    </td>
+
+    <td>
+      <%= restaurant.num_reviews %> 
+    </td>
+
+    <td>
+      <a href="/restaurants/<%= restaurant.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

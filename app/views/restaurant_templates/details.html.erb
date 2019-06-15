@@ -1,0 +1,170 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+<h1>
+  <%= @restaurant.place %> 
+</h1>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-sm-3">
+    <a href="/restaurants">
+      Go back
+    </a>
+  </div>
+
+  <div class="col-sm-3">
+    <a href="/existing_restaurant_form/<%= @restaurant.id %>">
+      Edit restaurant
+    </a>
+  </div>
+
+  <div class="col-sm-3">
+    <a href="/delete_restaurant/<%= @restaurant.id %>">
+      Delete restaurant
+    </a>
+  </div>
+  
+  <div class="col-sm-3">
+    <a href="/new_item_form">
+      Add an item?
+    </a>
+  </div>
+  
+</div>
+
+<dl>
+  <dt>
+    Place
+  </dt>
+  <dd>
+    <%= @restaurant.place %>
+  </dd>
+
+  <dt>
+    Website
+  </dt>
+  <dd>
+    <a href = "<%= @restaurant.website %>" >
+      <%= @restaurant.website %>
+    </a>
+  </dd>
+
+
+
+</dl>
+
+<table class="table">
+  <tr>
+    <th>
+      Dish
+    </th>
+
+    <th>
+      Description
+    </th>
+
+    <th>
+      Size
+    </th>
+
+    <th>
+      Vegetarian
+    </th>
+
+    <th>
+      Vegan
+    </th>
+
+    <th>
+      Glutenfree
+    </th>
+
+    <th>
+      Price
+    </th>
+
+    <th>
+      Number of reviews
+    </th>
+   
+    <th>
+      Average review
+    </th>
+
+
+
+    <th>
+      Link to all details & reviews
+    </th>
+  </tr>
+
+  <% Item.where("restaurant_id = ?", @restaurant.id).each do |item| %>
+  <tr>
+    <td>
+      <%= item.dish %>
+    </td>
+
+    <td>
+      <%= item.description %>
+    </td>
+    
+    <td>
+      <%= item.size %>
+    </td>
+    
+    <td>
+      <% if item.vegetarian %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+      
+    </td>
+
+    <td>
+      <% if item.vegan %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+    </td>
+
+    <td>
+      <% if item.glutenfree %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+    </td>
+
+
+
+    <td>
+      $<%= item.price %>
+    </td>
+    
+    
+    <td>
+      <%= item.num_reviews %>
+    </td>
+
+    <td>
+      <% if item.average_review==0 %>
+      No reviews yet
+      <% else %>
+      <%= item.average_review %>
+      <% end %>
+    </td>
+    
+    
+    <td>
+      <a href="/items/<%= item.id %>">
+        Show details
+    </a>
+    
+    
+    
+<% end %>
+  </tr>

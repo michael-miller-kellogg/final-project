@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+<h1>
+  All Reviews <%=Emoji.find_by_alias("clipboard").raw %>
+</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+<h6>
+  These are all the reviews ActiveCampaigners have submitted.
+</h6>
+
+<a href="/new_review_form">
+  Add a review
+</a>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-xs-12">
+  </div>
+
+  <div class="col-md-12">
+<hr>
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Item
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Rating
+    </th>
+
+    <th>
+      Review
+    </th>
+
+    <th>
+      Order again?
+    </th>
+
+
+    <th>
+    </th>
+  </tr>
+
+  <% @reviews.each do |review| %>
+  <tr>
+    <td>
+      <%= review.id %>
+    </td>
+
+    <td>
+      <%= Item.where("id=?", review.item_id).first.dish %>
+    </td>
+
+    <td>
+      <%= User.where("id=?", review.user_id).first.username %>
+    </td>
+
+    <td> 
+    <% num = review.rating.to_i %>
+    <% 1.upto num do |v|  %>
+      <%= Emoji.find_by_alias("taco").raw %>
+    <% end %>
+    </td>
+
+    <td>
+      <%= review.review[0..15] %> ...
+    </td>
+
+    <td>
+      <% if review.orderagain %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+    </td>
+
+    <td>
+      <a href="/reviews/<%= review.id %>">
+        See full review
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
+</div>
+
+  <div class="col-xs-1">
+    
+  </div>
+</div>
+
+</div>

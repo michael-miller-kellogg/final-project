@@ -1,0 +1,183 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+<h1>
+  <%= @item.dish %> details
+</h1>
+    </div>
+  </div>
+
+
+<div class="row">
+  <div class="col-sm-3">
+    <a href="/items">
+      Go back
+    </a>
+  </div>
+
+  <div class="col-sm-3">
+    <a href="/existing_item_form/<%= @item.id %>">
+      Edit item
+    </a>
+  </div>
+
+  <div class="col-sm-3">
+    <a href="/delete_item/<%= @item.id %>">
+      Delete item
+    </a>
+  </div>
+<br>
+
+
+</div>
+
+<dl>
+  <dt>
+    Restaurant
+  </dt>
+  <dd>
+    <%= Restaurant.where("id = ?", @item.restaurant_id).first.place   %>
+  </dd>
+
+  <dt>
+    Dish
+  </dt>
+  <dd>
+    <%= @item.dish %>
+  </dd>
+
+  <dt>
+    Description
+  </dt>
+  <dd>
+    <%= @item.description %>
+  </dd>
+
+  <dt>
+    Vegetarian
+  </dt>
+  <dd>
+      <% if @item.vegetarian %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+  </dd>
+
+  <dt>
+    Vegan
+  </dt>
+  <dd>
+      <% if @item.vegan %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+  </dd>
+
+  <dt>
+    Glutenfree
+  </dt>
+  <dd>
+    <% if @item.glutenfree %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+    <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+    <% end %>
+  </dd>
+
+  <dt>
+    Size
+  </dt>
+  <dd>
+    <%= @item.size %>
+  </dd>
+
+  <dt>
+    Price
+  </dt>
+  <dd>
+    $<%= @item.price %>
+  </dd>
+</dl>
+<div>
+  
+<form method="post">
+<button class="btn btn-primary btn-lg btn-block" formaction="/insert_favorite_record" id="item_id" name="item_id" value=<%=@item.id%> >
+  Favorite this item
+</button>
+</form>
+  </div>
+
+
+<table class="table">
+  <tr>
+    <th>
+      Restaurant
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Rating
+    </th>
+
+    <th>
+      Review
+    </th>
+
+    <th>
+      Orderagain
+    </th>
+
+    <th>
+      Submitted
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% Review.where("item_id = ?", @item.id).each do |review| %>
+  <tr>
+    <td>
+      <%= Restaurant.where("id = ?", @item.restaurant_id).first.place %>
+    </td>
+
+    <td>
+      <%= User.where("id=?", review.user_id).first.username %>
+    </td>
+
+    <td>
+    <% num = review.rating.to_i %>
+    <% 1.upto num do |v|  %>
+      <%= Emoji.find_by_alias("taco").raw %>
+    <% end %>
+    </td>
+
+    <td>
+      <%= review.review[0..15] %>...
+    </td>
+
+    <td>
+      <% if review.orderagain %>
+        <%= Emoji.find_by_alias("heavy_check_mark").raw %>
+      <% else %>
+        <%= Emoji.find_by_alias("x").raw %>
+      <% end %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(review.created_at) %> ago
+    </td>
+
+    <td>
+      <a href="/reviews/<%= review.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
