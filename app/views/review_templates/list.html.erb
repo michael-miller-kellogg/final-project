@@ -27,9 +27,6 @@
 <hr>
 <table class="table">
   <tr>
-    <th>
-      ID
-    </th>
 
     <th>
       Item
@@ -58,9 +55,6 @@
 
   <% @reviews.each do |review| %>
   <tr>
-    <td>
-      <%= review.id %>
-    </td>
 
     <td>
       <%= Item.where("id=?", review.item_id).first.dish %>
