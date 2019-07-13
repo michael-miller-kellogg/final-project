@@ -1,0 +1,35 @@
+<h1>
+  Edit feedback #<%= @feedback.id %>
+</h1>
+
+<hr>
+
+<%= render("feedback_templates/validation_failures.html.erb") %>
+
+<form action="/update_feedback_record/<%= @feedback.id %>" method="post">
+  <div>
+    <label for="feedback">
+      Feedback
+    </label>
+
+    <input type="text" id="feedback" name="feedback" value="<%= @feedback.feedback %>">
+  </div>
+
+  <div>
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" value="<%= @feedback.user_id %>">
+  </div>
+
+  <button>
+    Update feedback
+  </button>
+</form>
+
+<hr>
+
+<a href="/feedbacks">
+  Go back
+</a>

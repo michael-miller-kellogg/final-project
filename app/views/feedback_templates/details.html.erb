@@ -1,0 +1,54 @@
+<h1>
+  Feedback #<%= @feedback.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/feedbacks">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_feedback_form/<%= @feedback.id %>">
+      Edit feedback
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_feedback/<%= @feedback.id %>">
+      Delete feedback
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Feedback
+  </dt>
+  <dd>
+    <%= @feedback.feedback %>
+  </dd>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @feedback.user_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@feedback.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@feedback.updated_at) %> ago
+  </dd>
+</dl>
+

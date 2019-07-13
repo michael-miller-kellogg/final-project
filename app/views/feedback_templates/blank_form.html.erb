@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+<h1>
+  Submit feedback on this site
+</h1>
+
+<hr>
+
+<%= render("feedback_templates/validation_failures.html.erb") %>
+
+<form action="/insert_feedback_record" method="post">
+  <div>
+    <label for="feedback">
+      Let me know any suggestions, feedback, gripes:
+    </label>
+    <br>
+    <textarea type="text" cols="71" rows="5" id="review" name="feedback" value="<%= @feedback.feedback %>"></textarea>
+  </div>
+  
+  <% @feedback.user_id = 1 %>
+  
+  <button>
+    Submit feedback
+  </button>
+</form>
+
+<hr>

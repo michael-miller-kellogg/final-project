@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  # Routes for the Feedback resource:
+
+  # CREATE
+  match("/new_feedback_form", { :controller => "feedbacks", :action => "blank_form", :via => "get" })
+  match("/insert_feedback_record", { :controller => "feedbacks", :action => "save_new_info", :via => "post" })
+
+  # READ
+  match("/feedbacks", { :controller => "feedbacks", :action => "list", :via => "get" })
+  match("/feedbacks/:id_to_display", { :controller => "feedbacks", :action => "details", :via => "get" })
+
+  # UPDATE
+  match("/existing_feedback_form/:id_to_prefill", { :controller => "feedbacks", :action => "prefilled_form", :via => "get" })
+  match("/update_feedback_record/:id_to_modify", { :controller => "feedbacks", :action => "save_edits", :via => "post" })
+
+  # DELETE
+  match("/delete_feedback/:id_to_remove", { :controller => "feedbacks", :action => "remove_row", :via => "get" })
+
+  #------------------------------
+
   #LANDING PAGE route
   
   match("/", { :controller => "restaurants", :action => "list", :via => "get" })
